@@ -1,0 +1,11 @@
+apiVersion: stable.simple-bellerophon.io/v444beta989
+kind: BellerophonSimple
+metadata:
+  name: example-simple-bellerophon-hero1
+spec:
+  winged_horse_name: "pegasusio"
+    # type: string
+  image: "quay.io/pok-us-io/pokus_api_build"
+    # type: string
+  replicas: 7
+    # type: integer

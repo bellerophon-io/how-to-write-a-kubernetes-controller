@@ -1,0 +1,73 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  # name must match the spec fields below, and be in the form: <plural>.<group>
+  name: sheroes.stable.simple-bellerophon.io
+  # name: crontabs.stable.example.com
+spec:
+  # group name to use for REST API: /apis/<group>/<version>
+  # group: stable.example.com
+  group: stable.simple-bellerophon.io
+  # list of versions supported by the Bellerophon Custom Resource Definition
+  versions:
+    - name: v444beta989
+      # Each version can be enabled/disabled by Served flag.
+      served: true
+      # One and only one version must be marked as the storage version.
+      storage: true
+      schema:
+        # What does a CRD does when deployed ? It creates new Kubernetes API Endpoints
+        openAPIV3Schema:
+          type: object
+          # Properties down there, are exactly what you can put inside the
+          # yaml to create a Kubernetes Object of 'kind: BellerophonSimple' :
+          # [apiVersion], [kind], [metadata], and [spec]. Also, "inside" [spec], the sub-properties [winged_horse_name] [image] [replicas]
+          properties:
+            apiVersion:
+              type: string
+            kind:
+              type: string
+            metadata:
+              type: object
+            spec:
+              type: object
+              properties:
+                winged_horse_name:
+                  type: string
+                # cronSpec: # I Kubernetes example, they thought of cronSpec as something like
+                  # type: string
+                image:
+                  type: string
+                replicas:
+                  type: integer
+  # either Namespaced or Cluster
+  scope: Namespaced
+  names:
+    # plural name to be used in the URL: /apis/<group>/<version>/<plural>
+    plural: sheroes
+    # singular name to be used as an alias on the CLI and for display
+    singular: shero
+    # kind is normally the CamelCased singular type. Your resource manifests use this.
+    kind: BellerophonSimple
+    # shortNames allow shorter string to match your resource on the CLI
+    shortNames:
+    - bsh
+
+
+# ------------------------------------------------------------------------------------------------
+#   KUBERNETES API ENDPOINTS CREATED BY THIS CRD
+# ------------------------------------------------------------------------------------------------
+# /apis/stable.simple-bellerophon.io/v444beta989/namespaces/*/sheroes/<and here the standard CRUD operations provided by any Kybernetes API Endpoints of any Resource, like e.g. Config Maps ...>
+# ------------------------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------------------------
+#
+# ------------------------------------------------------------------------------------------------

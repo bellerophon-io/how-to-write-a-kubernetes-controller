@@ -1,0 +1,18 @@
+apiVersion: stable.bellerophon.io/v1beta7
+kind: Bellerophon
+metadata:
+  name: example-bellerophon-hero1
+spec:
+  winged_horse_name: "pegasusio"
+    # type: string
+  image: "quay.io/pok-us-io/pokus_api_build"
+    # type: string
+  replicas: 7
+    # type: integer
+weapons:
+  is_atomatic_rifle: true
+    # type: boolean
+  image: "quay.io/pok-us-io/pokus_api_build"
+    # type: string
+  explosive: false
+    # type: boolean
