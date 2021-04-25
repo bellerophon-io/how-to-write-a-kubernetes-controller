@@ -143,12 +143,120 @@ kubectl apply -f ./k8s-crds/simple/bellerophon-simple.yaml
 # ------------------------------------------------------------------------------------------------
 
 
-# --- #
-# The apply below will give errors, because there are things missing : It is
-# not enough to just [kubectl apply  the CRD] , to be able to create a
-# Kubernetes Object of the Kubernetes kind defined by this CRD.
+
 # --- #
 # --- below the [ --v=6] will give verbose stdout showing
-#     what Endpoints are used when creating the Resource
+#     what Kubernetes API Endpoints are used when creating the Resource
 kubectl apply -f ./k8s-crds/simple/bellerophon-simple-example-instance1.yaml --v=6
+
+
+kubectl get sheroes -o wide
+
+kubectl describe sheroes example-simple-bellerophon-hero1
+
+```
+
+* The full stdout of `kubectl apply -f ./k8s-crds/simple/bellerophon-simple-example-instance1.yaml --v=6` :
+
+```bash
+bash-3.2$ kubectl apply -f ./k8s-crds/simple/bellerophon-simple-example-instance1.yaml --v=6
+I0425 01:32:47.409913   51336 loader.go:375] Config loaded from file:  /Users/jbl/.kube/config
+I0425 01:32:47.550600   51336 round_trippers.go:444] GET https://0.0.0.0:7888/openapi/v2?timeout=32s 200 OK in 127 milliseconds
+I0425 01:32:47.858291   51336 discovery.go:214] Invalidating discovery information
+I0425 01:32:47.861796   51336 round_trippers.go:444] GET https://0.0.0.0:7888/api?timeout=32s 200 OK in 3 milliseconds
+I0425 01:32:47.883426   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis?timeout=32s 200 OK in 3 milliseconds
+I0425 01:32:47.914131   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/events.k8s.io/v1?timeout=32s 200 OK in 12 milliseconds
+I0425 01:32:47.942024   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/scheduling.k8s.io/v1?timeout=32s 200 OK in 39 milliseconds
+I0425 01:32:47.942066   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/node.k8s.io/v1?timeout=32s 200 OK in 40 milliseconds
+I0425 01:32:47.944096   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/authentication.k8s.io/v1?timeout=32s 200 OK in 42 milliseconds
+I0425 01:32:47.946215   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/apiextensions.k8s.io/v1?timeout=32s 200 OK in 43 milliseconds
+I0425 01:32:47.946509   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/stable.simple-bellerophon.io/v444beta989?timeout=32s 200 OK in 43 milliseconds
+I0425 01:32:47.947092   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/storage.k8s.io/v1?timeout=32s 200 OK in 44 milliseconds
+I0425 01:32:47.947288   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/events.k8s.io/v1beta1?timeout=32s 200 OK in 45 milliseconds
+I0425 01:32:47.948472   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/authentication.k8s.io/v1beta1?timeout=32s 200 OK in 46 milliseconds
+I0425 01:32:47.948634   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/autoscaling/v2beta1?timeout=32s 200 OK in 47 milliseconds
+I0425 01:32:47.949554   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/k3s.cattle.io/v1?timeout=32s 200 OK in 46 milliseconds
+I0425 01:32:47.949605   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/storage.k8s.io/v1beta1?timeout=32s 200 OK in 46 milliseconds
+I0425 01:32:47.949615   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/networking.k8s.io/v1?timeout=32s 200 OK in 46 milliseconds
+I0425 01:32:47.951602   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/discovery.k8s.io/v1beta1?timeout=32s 200 OK in 48 milliseconds
+I0425 01:32:47.951616   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/certificates.k8s.io/v1beta1?timeout=32s 200 OK in 48 milliseconds
+I0425 01:32:47.951621   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/authorization.k8s.io/v1?timeout=32s 200 OK in 50 milliseconds
+I0425 01:32:47.951679   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/authorization.k8s.io/v1beta1?timeout=32s 200 OK in 50 milliseconds
+I0425 01:32:47.953652   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/coordination.k8s.io/v1?timeout=32s 200 OK in 51 milliseconds
+I0425 01:32:47.953785   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/rbac.authorization.k8s.io/v1beta1?timeout=32s 200 OK in 51 milliseconds
+I0425 01:32:47.955081   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/apps/v1?timeout=32s 200 OK in 53 milliseconds
+I0425 01:32:47.958341   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/apiregistration.k8s.io/v1beta1?timeout=32s 200 OK in 56 milliseconds
+I0425 01:32:47.960064   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/batch/v1beta1?timeout=32s 200 OK in 56 milliseconds
+I0425 01:32:47.960173   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/autoscaling/v1?timeout=32s 200 OK in 58 milliseconds
+I0425 01:32:47.960192   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/flowcontrol.apiserver.k8s.io/v1beta1?timeout=32s 200 OK in 56 milliseconds
+I0425 01:32:47.960206   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/batch/v1?timeout=32s 200 OK in 57 milliseconds
+I0425 01:32:47.960229   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/extensions/v1beta1?timeout=32s 200 OK in 57 milliseconds
+I0425 01:32:47.960635   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/scheduling.k8s.io/v1beta1?timeout=32s 200 OK in 58 milliseconds
+I0425 01:32:47.961359   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/autoscaling/v2beta2?timeout=32s 200 OK in 58 milliseconds
+I0425 01:32:47.961969   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/metrics.k8s.io/v1beta1?timeout=32s 200 OK in 60 milliseconds
+I0425 01:32:47.961975   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/helm.cattle.io/v1?timeout=32s 200 OK in 59 milliseconds
+I0425 01:32:47.962008   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/certificates.k8s.io/v1?timeout=32s 200 OK in 59 milliseconds
+I0425 01:32:47.962704   51336 round_trippers.go:444] GET https://0.0.0.0:7888/api/v1?timeout=32s 200 OK in 61 milliseconds
+I0425 01:32:47.965085   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/coordination.k8s.io/v1beta1?timeout=32s 200 OK in 63 milliseconds
+I0425 01:32:47.965095   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/rbac.authorization.k8s.io/v1?timeout=32s 200 OK in 61 milliseconds
+I0425 01:32:47.965123   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/apiextensions.k8s.io/v1beta1?timeout=32s 200 OK in 63 milliseconds
+I0425 01:32:47.965089   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/apiregistration.k8s.io/v1?timeout=32s 200 OK in 63 milliseconds
+I0425 01:32:47.966222   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/node.k8s.io/v1beta1?timeout=32s 200 OK in 63 milliseconds
+I0425 01:32:47.966262   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/networking.k8s.io/v1beta1?timeout=32s 200 OK in 64 milliseconds
+I0425 01:32:47.966847   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/admissionregistration.k8s.io/v1?timeout=32s 200 OK in 65 milliseconds
+I0425 01:32:47.969232   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/admissionregistration.k8s.io/v1beta1?timeout=32s 200 OK in 66 milliseconds
+I0425 01:32:47.972158   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/policy/v1beta1?timeout=32s 200 OK in 68 milliseconds
+I0425 01:32:49.001474   51336 round_trippers.go:444] GET https://0.0.0.0:7888/apis/stable.simple-bellerophon.io/v444beta989/namespaces/default/sheroes/example-simple-bellerophon-hero1 404 Not Found in 153 milliseconds
+I0425 01:32:49.028337   51336 round_trippers.go:444] POST https://0.0.0.0:7888/apis/stable.simple-bellerophon.io/v444beta989/namespaces/default/sheroes?fieldManager=kubectl-client-side-apply 201 Created in 26 milliseconds
+bellerophonsimple.stable.simple-bellerophon.io/example-simple-bellerophon-hero1 created
+I0425 01:32:49.028684   51336 apply.go:390] Running apply post-processor function
+```
+
+* So Here are the  Kubernetes API Endpoints, created by the `BellerophonSimple` `CRD`, that are used when creating the Resource of `kind: BellerophonSimple` `kubectl apply -f ./k8s-crds/simple/bellerophon-simple-example-instance1.yaml` :
+
+```bash
+GET https://0.0.0.0:7888/apis/stable.simple-bellerophon.io/v444beta989?timeout=32s 200 OK in 43 milliseconds
+GET https://0.0.0.0:7888/apis/stable.simple-bellerophon.io/v444beta989/namespaces/default/sheroes/example-simple-bellerophon-hero1 404 Not Found in 153 milliseconds
+POST https://0.0.0.0:7888/apis/stable.simple-bellerophon.io/v444beta989/namespaces/default/sheroes?fieldManager=kubectl-client-side-apply 201 Created in 26 milliseconds
+```
+
+* Now the full stdout of `kubectl get sheroes -o wide` and `kubectl describe sheroes example-simple-bellerophon-hero1` :
+
+```bash
+bash-3.2$ kubectl get sheroes -o wide
+NAME                               AGE
+example-simple-bellerophon-hero1   34m
+bash-3.2$ kubectl describe sheroes example-simple-bellerophon-hero1
+Name:         example-simple-bellerophon-hero1
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+API Version:  stable.simple-bellerophon.io/v444beta989
+Kind:         BellerophonSimple
+Metadata:
+  Creation Timestamp:  2021-04-24T23:32:49Z
+  Generation:          1
+  Managed Fields:
+    API Version:  stable.simple-bellerophon.io/v444beta989
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:image:
+        f:replicas:
+        f:winged_horse_name:
+    Manager:         kubectl-client-side-apply
+    Operation:       Update
+    Time:            2021-04-24T23:32:49Z
+  Resource Version:  3987
+  UID:               bcdcfd9d-6c9d-4246-a1e0-d8eb4298b908
+Spec:
+  Image:              quay.io/pok-us-io/pokus_api_build
+  Replicas:           7
+  winged_horse_name:  pegasusio
+Events:               <none>
 ```
