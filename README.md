@@ -173,13 +173,26 @@ So what a Kubernetes Controller will do, is that it will do the things that are 
 Now one more word, here, is that I now know, this :
 * The Kubernetes Controller role is to ensure the _**desired state**_ of "something" is maintained.
 * The desired state of what ? Well the desired state of a stateful app deployed into the cluster :
-  * The Kuebrenetes Clsuter will perfectly know, without the need of any Kubernetes Controller coming from you, how to maitnain the desired state of a stateless appllication : in a word, because it is easy, and Kuebrnetes knows ho w to do that perfrectly
+  * The Kubernetes Clsuter will perfectly know, without the need of any Kubernetes Controller coming from you, how to maitnain the desired state of a stateless appllication : in a word, because it is easy, and Kuebrnetes knows ho w to do that perfrectly
   * But when it comes to a given stateful application, deployed into Kubernetes, only those who developed that applications, know "how to maintain the deisred state" of the aplication. Examples : think of a MySQL Staeful set, or a MongoDB Atlas etc.. Those who develope dthe softwarte, or people who know very well the software.
   * In other words, and it's more important to understand it that way :
     * the operations you perform, to maintain the diresired state of a stateful software, are very different from one software, to another
     * maintaining the desired state of a MongoDB Atlas cluster, requries performing operations taht ar very different form the operations you perform, to maintain the desired state of a PostgreSQL Cluster
     * So in a aword , a Kubernetes Controller (or: a Kubernetes Operator), factorizes these operations, that are specific for each different sofware, into one thing. And there fore provides automation for those operations.
     * This is why the Kubernetes Operator is such a friend with gitops : it just rtequries you, to operate the software, to give the desired state you want, and since this desired state can entirely be descirbed as YAML files, well you can git version control the hsitory of the different states YOU desired for your software, into the Kubernetes Cluster...
+
+Now let's be a little more clear about classification :
+* Actually, A Kubernetes Operator is a kind of Kubernetes Controller
+* Kubernetes itself, is made, among other thigns, made of Kubernetes Controllers :
+  * It is Kubernetes Controllers which are responsible for maintaing the desired sstate of stateless applications in the cluster;
+  * Among other things, it is a Kubernetes Controller who make sure that in a replicaset, the number of replica is always maitnained to the umber specified in your yaml . This `Kubernetes` controller is called the "replica set controller" (Surprise hm?)
+* Now, Kubernetes Operators are Kubernetes Controllers made for Stateful Applications deployed into the Kubernete Cluster :
+  * there is no one and only Kubernetes Controller or set of Kubernetes Controllers, fit to properly operate ALL SOFTwARES iIN THE WORLD
+  * Only you, who developed your brand new software, can tell how yoru software should be operated :
+    * in the old days, when we developed a software, we proivded our users a guide, to tell him how to operate the software
+    * well now we provide the users with an "Robot" Operator, a Kuebrnetes Operator, and the docuementation on how to operator the Operator :)
+    * Ok, so you'll tell me there 's no change, just a Robot, and still operations docuementations.
+    * Well getting rid of any operations documentation is nto the idea here, no : the idea is that now, your software can be operated the gitops way. And that's a huge win.
 
 
 
