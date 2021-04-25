@@ -22,11 +22,10 @@ Now, on https://kubernetes.io/docs/reference/using-api/client-libraries/ , what 
 
 https://insujang.github.io/2020-02-11/kubernetes-custom-resource/
 
-Absolutely excellent reference, :
-* exaplins the origin of the concept of CRD, which is the Operator Pattern :
-  * Kubernetes Operator Pattern, came out of CoreOS Team. The idea is getting a "Human-like behaviour", described as **"Observe, Analyze, and Act"** :  SO the concpet of CRD has a relation with the Concept of a Kubernetes Operator
-  * gives concrete test be creating an example, simple `CRD`, and then trying to create a Kubernetes Object, of the Kubernetes `kind` defined tby the Kubernetes `CRD`
-    * oh ok, creating the
+* explains the origin of the concept of `CRD`, which is the Operator Pattern :
+  * `Kubernetes Operator` Pattern, came out of `CoreOS` Team. The idea is getting a "Human-like behaviour", described as _**"Observe, Analyze, and Act"**_ :  SO the concpet of CRD has a relation with the Concept of a Kubernetes Operator
+  * gives concrete test be creating an example, simple `CRD`, and then trying to create a `Kubernetes` Object, of the `Kubernetes` `kind` defined tby the Kubernetes `CRD`
+
 
 
 #### Source 3 : CRD Validation
