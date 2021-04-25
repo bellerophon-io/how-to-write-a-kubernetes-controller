@@ -2,6 +2,17 @@
 
 ### Tech forums
 
+#### Source 0
+
+https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/
+
+Specifies rules isomorphic with the rational language defined by Open APIv3, to use to define CRDs.
+
+There we have validation , and it's probably there that we can implement in the Kubernetes Controller, a validation module, whatever its architecture is (Validation probably in the "Process phase") in the below schematics :
+
+![How A Kubernetes Controller Should Work](../../what-is/a-kubernetes-controller/client-go-controller-interaction.jpeg)
+
+[See also this page in this repo](../../what-is/a-kubernetes-controller)
 
 #### Source 1
 

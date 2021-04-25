@@ -51,7 +51,6 @@ Ok, so in my developing a `Kubernetes Controller` in `TypeScript` , it seems lik
 
 ![How A Kubernetes Controller Should Work](./client-go-controller-interaction.jpeg)
 
-
 #### client-go components
 
 * Reflector: A reflector, which is defined in [type *Reflector* inside package *cache*](https://github.com/kubernetes/client-go/blob/master/tools/cache/reflector.go),
